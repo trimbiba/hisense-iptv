@@ -3,7 +3,7 @@
   "accentColor": "#4f8cff",
   "homeCountries": ["SE", "UK", "US"],
   "homeCategories": ["news", "sports", "movies", "music", "kids"],
-  "pinnedChannels": [],
+  "pinnedChannels": ["SVT1.se", "SVT2.se", "Kunskapskanalen.se"],
   "hiddenChannels": [],
   "rowLength": 30
 }
