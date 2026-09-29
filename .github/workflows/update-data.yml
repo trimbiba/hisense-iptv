@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: "0 4 * * *"   # every day at 04:00 UTC
   workflow_dispatch:       # "Run workflow" button on GitHub
+  push:
+    paths: [config.json, scripts/**]   # rebuild right after you change the config
 
 permissions:
   contents: write
@@ -17,9 +19,10 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/build_data.py
+      - run: python scripts/build_playlist.py
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/channels.json
+          git add data/channels.json playlist.m3u
           git diff --cached --quiet || (git commit -m "Update channel data" && git push)

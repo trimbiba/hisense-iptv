@@ -4,6 +4,10 @@ A web app for watching free, public TV channels on a TV, used entirely with the 
 
 VIDAA TVs can't install your own apps, but they can open web pages. This app is hosted on GitHub Pages and opened in the TV's **Browser** app.
 
+## Raspberry Pi + Kodi
+
+The project also builds `playlist.m3u`, your own channel list for Kodi. See [docs/raspberry-pi.md](docs/raspberry-pi.md) to set up a Pi that you control with the normal TV remote.
+
 ## Using it with the remote
 
 | Button | What it does |
