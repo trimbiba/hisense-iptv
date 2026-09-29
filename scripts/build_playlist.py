@@ -35,7 +35,19 @@ def main():
     for cid in config.get("pinnedChannels", []):
         if cid in by_id:
             add(by_id[cid], "Pinned")
+    # First the home countries in order (Sweden, then UK, then US…),
     for code in config.get("homeCountries", []):
+        for ch in channels:
+            if ch["c"] == code:
+                add(ch, None)
+
+    # …then every other country, alphabetically by country name, so the
+    # playlist holds everything but keeps the priority order at the top.
+    rest = sorted(
+        {ch["c"] for ch in channels} - set(config.get("homeCountries", [])),
+        key=lambda code: countries.get(code, {}).get("n", code or "zz"),
+    )
+    for code in rest:
         for ch in channels:
             if ch["c"] == code:
                 add(ch, None)

@@ -1,0 +1,13 @@
+{
+  "_comment": "Hand-added channels, merged on top of the iptv-org data by build_data.py and kept through the nightly rebuild. Same compact format: i=id, n=name, c=country code, g=categories, s=[{u:url}], l=logo. Only add streams that are publicly and legally available (e.g. public-service broadcasters).",
+  "channels": [
+    {
+      "i": "SVTBarnSVT24.se",
+      "n": "SVT Barn / SVT24",
+      "c": "SE",
+      "g": ["kids", "general"],
+      "s": [{ "u": "https://svt-live-channel.akamaized.net/l6/se/svtb/master-fmp4.m3u8?format=hls&defaultSubLang=1", "q": "1080p" }],
+      "l": "https://i.imgur.com/7oNe8xj.png"
+    }
+  ]
+}

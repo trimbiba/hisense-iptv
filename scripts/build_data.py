@@ -65,6 +65,20 @@ def main():
         out_channels.append(item)
         used_countries.add(c.get("country"))
 
+    # Merge hand-added channels (data/extra.json). They win over the API on id,
+    # so a curated stream replaces a stale one, and are kept every rebuild.
+    extra_path = os.path.join(os.path.dirname(__file__), "..", "data", "extra.json")
+    if os.path.exists(extra_path):
+        with open(extra_path, encoding="utf-8") as f:
+            extra = json.load(f).get("channels", [])
+        by_pos = {c["i"]: i for i, c in enumerate(out_channels)}
+        for ch in extra:
+            if ch["i"] in by_pos:
+                out_channels[by_pos[ch["i"]]] = ch
+            else:
+                out_channels.append(ch)
+            used_countries.add(ch.get("c"))
+
     out_channels.sort(key=lambda x: x["n"].lower())
     data = {
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
