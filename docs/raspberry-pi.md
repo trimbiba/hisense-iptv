@@ -2,20 +2,23 @@
 
 The Pi plugs into the TV's HDMI port and starts straight into Kodi. You control it with the **normal Hisense remote** (HDMI-CEC). Kodi loads `playlist.m3u` from your GitHub project, so any change you make to the project shows up on the TV.
 
-Works on Raspberry Pi 2, 3, 4 and 5. Pi 4 or 5 recommended.
+Written for a **Raspberry Pi 3 Model B+**. It also works on Pi 4 and 5 (they need a micro-HDMI cable and a USB-C power supply).
+
+**Pi 3 B+ limits:** HD (1080p) plays smoothly; 4K and some HEVC/H.265 streams won't. Almost all IPTV channels are 1080p H.264 or lower, so this rarely matters. If a channel stutters, try another channel or plug in Ethernet.
 
 ## What you need
 
-- The Pi, its power supply, and an HDMI cable. Pi 4 and 5 need a **micro-HDMI** to HDMI cable.
+- The Pi 3 B+ and a **normal full-size HDMI cable**.
+- A **micro-USB power supply, 5V / 2.5A**. Use the official one if you can; a weak phone charger causes stutters and restarts. A lightning-bolt icon in the top-right corner means the power supply is too weak.
 - A microSD card of 8 GB or more. **It will be erased.**
 - A computer to prepare the card (your Mac).
-- Wi-Fi details, or a network cable to the router.
+- Internet: Wi-Fi works (the Pi 3 B+ supports 5 GHz). Ethernet is more stable if channels buffer.
 
 ## 1. Put LibreELEC (Kodi) on the SD card
 
 1. On the Mac, download and open **Raspberry Pi Imager**: https://www.raspberrypi.com/software/
-2. **Choose Device**: your Pi model.
-3. **Choose OS** → *Media player OS* → **LibreELEC** (pick the one for your model).
+2. **Device**: **Raspberry Pi 3**.
+3. **OS**: scroll down to **Media player OS** → **LibreELEC**. Pick the version for Raspberry Pi 3 (RPi3). **Not** Raspberry Pi OS.
 4. **Choose Storage**: the microSD card → **Write**.
 
 ## 2. First start
