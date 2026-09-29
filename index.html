@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My TV</title>
+  <link rel="stylesheet" href="css/tv.css">
+</head>
+<body>
+  <header id="topbar">
+    <div id="brand">My TV</div>
+    <nav id="tabs">
+      <button class="tab focusable" data-screen="home">Home</button>
+      <button class="tab focusable" data-screen="browse">Browse</button>
+      <button class="tab focusable" data-screen="search">Search</button>
+    </nav>
+    <div id="clock"></div>
+  </header>
+
+  <main>
+    <section id="screen-home" class="screen"></section>
+
+    <section id="screen-browse" class="screen">
+      <aside id="country-list" class="scroll-y"></aside>
+      <div id="browse-main">
+        <div id="category-chips" class="scroll-x"></div>
+        <div id="browse-title"></div>
+        <div id="browse-grid" class="grid scroll-y"></div>
+      </div>
+    </section>
+
+    <section id="screen-search" class="screen">
+      <div id="search-left">
+        <div id="search-query" aria-live="polite"><span class="placeholder">Type a channel name…</span></div>
+        <div id="keyboard"></div>
+      </div>
+      <div id="search-grid" class="grid scroll-y"></div>
+    </section>
+  </main>
+
+  <section id="player" hidden>
+    <video id="video" autoplay playsinline></video>
+    <div id="player-status"></div>
+    <div id="player-overlay">
+      <div id="player-info">
+        <img id="player-logo" alt="">
+        <div>
+          <div id="player-name"></div>
+          <div id="player-meta"></div>
+        </div>
+      </div>
+      <div id="player-actions">
+        <button class="focusable" data-action="prev">▲ Previous</button>
+        <button class="focusable" data-action="next">▼ Next</button>
+        <button class="focusable" data-action="fav">☆ Favourite</button>
+        <button class="focusable" data-action="alt">Try other stream</button>
+        <button class="focusable" data-action="hide">Hide channel</button>
+        <button class="focusable" data-action="close">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="loading">Loading channels…</div>
+  <div id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
