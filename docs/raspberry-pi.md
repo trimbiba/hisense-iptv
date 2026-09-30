@@ -80,7 +80,17 @@ In Kodi, PVR IPTV Simple Client → Configure → EPG: *Location* = Remote path,
 
 SVT sends up to 1920×1080 at 50 fps. InputStream Adaptive is set to **fixed-res, max 1080p** (Kodi → Add-ons → My add-ons → VideoPlayer InputStream → InputStream Adaptive → Configure). The Pi 3 is borderline for 1080p50. If video stutters or drops out more, set the max resolution to **720p**, which is still HD and needs about a third less bandwidth.
 
+## Settings applied on this Pi
+
+- **Time zone:** Settings → Interface → Regional → Timezone → Sweden / Europe/Stockholm. The default is UTC, which is two hours behind in summer.
+- **Subtitles on by default:** Settings → Player → Language → Preferred subtitle language → Swedish. SVT's live subtitles are typed in real time, so on live shows they trail the speech by a few seconds.
+- **Tidy home menu:** Settings → Interface → Skin → Configure skin → Main menu items. Only TV, Videos, Add-ons and Favourites are shown.
+- **SVT Play add-on** (from Kodi's official store) for on-demand SVT programmes: Videos → Video add-ons → SVT Play.
+
 ## Troubleshooting
+
+**The guide is blank, but channels play.** Kodi hasn't copied the guide into its own database. Settings → PVR & Live TV → Guide → **Clear data**, and turn off **Prevent updates while playing TV**.
+
 
 **A channel plays for a few seconds, then drops back to the list.** Kodi's basic player can't follow SVT-style live streams. In PVR IPTV Simple Client → Configure → Advanced, turn on **"Use inputstream.adaptive for m3u8 (HLS) streams"**.
 
