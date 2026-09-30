@@ -63,3 +63,13 @@ Tip: Kodi → Settings → Interface → Skin → **Start-up window** → *TV ch
 ## Changing channels
 
 Edit `config.json` (or ask Claude Code). `pinnedChannels`, `homeCountries` and `hiddenChannels` decide what's in the list and in what order. After you push the change, GitHub rebuilds `playlist.m3u`. The channel list is also refreshed every night, and Kodi picks it up on its next start.
+
+## Troubleshooting
+
+**A channel plays for a few seconds, then drops back to the list.** Kodi's basic player can't follow SVT-style live streams. In PVR IPTV Simple Client → Configure → Advanced, turn on **"Use inputstream.adaptive for m3u8 (HLS) streams"**.
+
+**A channel stops after a while (minutes to hours).** The log (`/storage/.kodi/temp/kodi.log`) shows `Timeout was reached` for segment downloads: the connection hiccuped. Fixes, most effective first:
+1. Plug in **Ethernet**.
+2. Keep Wi-Fi power saving off. `/storage/.config/autostart.sh` runs `iw dev wlan0 set power_save off` at boot.
+3. Keep the Pi cool, with airflow around the case or a small heatsink. Check with `vcgencmd measure_temp`; a Pi 3 B+ slows itself down at 60 °C.
+4. Use a proper 5V / 2.5A power supply. `vcgencmd get_throttled` should print `0x0`.
