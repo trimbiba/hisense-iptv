@@ -23,7 +23,7 @@ jobs:
           git clone --depth 1 https://github.com/iptv-org/epg.git grabber
           cd grabber && npm install
       - name: Download the guide
-        run: cd grabber && npm run grab --- --channels=../epg/svt.channels.xml --output=../guide.xml --days=3 --delay=5000
+        run: cd grabber && npm run grab --- --channels=../epg/svt.channels.xml --output=../guide.xml --days=3 --delay=1000
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"

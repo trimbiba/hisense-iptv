@@ -66,12 +66,12 @@ Edit `config.json` (or ask Claude Code). `pinnedChannels`, `homeCountries` and `
 
 ## TV guide
 
-`guide.xml` holds about 3 days of programmes for SVT1, SVT2, Kunskapskanalen and SVT Barn/SVT24, from tv.nu. It's built nightly by `.github/workflows/update-epg.yml` using iptv-org's guide grabber.
+`guide.xml` holds about 3 days of programmes for SVT1, SVT2, Kunskapskanalen and SVT Barn/SVT24, from allente.se. It's built nightly by `.github/workflows/update-epg.yml` using iptv-org's guide grabber.
 
 In Kodi, PVR IPTV Simple Client → Configure → EPG: *Location* = Remote path, *XMLTV URL* =
 `https://raw.githubusercontent.com/trimbiba/hisense-iptv/main/guide.xml`
 
-To add a channel, add a line to `epg/svt.channels.xml`. tv.nu covers about 200 Swedish channels. Set `xmltv_id` to the channel's `tvg-id` from `playlist.m3u`.
+To add a channel, add a line to `epg/svt.channels.xml`. allente.se covers about 150 Nordic channels. Set `xmltv_id` to the channel's `tvg-id` from `playlist.m3u`.
 
 ## Picture quality
 
