@@ -87,6 +87,18 @@ SVT sends up to 1920×1080 at 50 fps. InputStream Adaptive is set to **fixed-res
 - **Tidy home menu:** Settings → Interface → Skin → Configure skin → Main menu items. Only TV, Videos, Add-ons and Favourites are shown.
 - **SVT Play add-on** (from Kodi's official store) for on-demand SVT programmes: Videos → Video add-ons → SVT Play.
 
+## Saving data when nobody is watching
+
+The Pi can't see whether the TV is on, so a channel left playing keeps downloading. SVT in HD uses about 2.7 GB an hour. Two guardrails:
+- **TV off → playback stops:** Settings → System → Input → Peripherals → CEC adapter → *When the TV is switched off* = **Stop playback**, and *When switching to another source* = **Stop playback**.
+- **"Still watching?" timer:** `pi/mytv-watchdog.py`, started from `pi/autostart.sh`. After 4 hours without a remote-control press it shows a message, then stops playback 5 minutes later. Change `IDLE_HOURS` at the top to adjust.
+
+Backup copies of the Pi's scripts are in `pi/`. To restore them: `scp pi/* root@<pi-ip>:/storage/.config/`
+
+## Picture view in video add-ons
+
+The Pi uses **Estuary (My TV)**, a copy of Kodi's default design at `/storage/.kodi/addons/skin.estuary.mytv`. Video add-ons like SVT Play open as a picture grid (**InfoWall**) by default. The change: `xml/MyVideoNav.xml` lists InfoWall first and passes it `vtype=list`, and `xml/View_54_InfoWall.xml` uses that parameter as its view type. To go back: Settings → Interface → Skin → **Estuary**.
+
 ## Troubleshooting
 
 **The guide is blank, but channels play.** Kodi hasn't copied the guide into its own database. Settings → PVR & Live TV → Guide → **Clear data**, and turn off **Prevent updates while playing TV**.
