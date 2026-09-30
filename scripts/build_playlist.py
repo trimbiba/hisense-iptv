@@ -10,6 +10,8 @@ import json
 import os
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
+# Built nightly by .github/workflows/update-epg.yml.
+GUIDE_URL = "https://raw.githubusercontent.com/trimbiba/hisense-iptv/main/guide.xml"
 
 
 def main():
@@ -52,7 +54,7 @@ def main():
             if ch["c"] == code:
                 add(ch, None)
 
-    lines = ["#EXTM3U"]
+    lines = [f'#EXTM3U url-tvg="{GUIDE_URL}"']
     for number, (ch, first_group) in enumerate(ordered, start=1):
         groups = [first_group] if first_group else []
         country = countries.get(ch["c"], {}).get("n")

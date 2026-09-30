@@ -64,6 +64,19 @@ Tip: Kodi → Settings → Interface → Skin → **Start-up window** → *TV ch
 
 Edit `config.json` (or ask Claude Code). `pinnedChannels`, `homeCountries` and `hiddenChannels` decide what's in the list and in what order. After you push the change, GitHub rebuilds `playlist.m3u`. The channel list is also refreshed every night, and Kodi picks it up on its next start.
 
+## TV guide
+
+`guide.xml` holds about 3 days of programmes for SVT1, SVT2, Kunskapskanalen and SVT Barn/SVT24, from tv.nu. It's built nightly by `.github/workflows/update-epg.yml` using iptv-org's guide grabber.
+
+In Kodi, PVR IPTV Simple Client → Configure → EPG: *Location* = Remote path, *XMLTV URL* =
+`https://raw.githubusercontent.com/trimbiba/hisense-iptv/main/guide.xml`
+
+To add a channel, add a line to `epg/svt.channels.xml`. tv.nu covers about 200 Swedish channels. Set `xmltv_id` to the channel's `tvg-id` from `playlist.m3u`.
+
+## Picture quality
+
+SVT sends up to 1920×1080 at 50 fps. InputStream Adaptive is set to **fixed-res, max 1080p** (Kodi → Add-ons → My add-ons → VideoPlayer InputStream → InputStream Adaptive → Configure). The Pi 3 is borderline for 1080p50. If video stutters or drops out more, set the max resolution to **720p**, which is still HD and needs about a third less bandwidth.
+
 ## Troubleshooting
 
 **A channel plays for a few seconds, then drops back to the list.** Kodi's basic player can't follow SVT-style live streams. In PVR IPTV Simple Client → Configure → Advanced, turn on **"Use inputstream.adaptive for m3u8 (HLS) streams"**.

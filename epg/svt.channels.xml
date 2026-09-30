@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TV guide sources, fetched nightly by .github/workflows/update-epg.yml
+     using iptv-org/epg. xmltv_id must equal the channel's tvg-id in
+     playlist.m3u so Kodi can match them. To add a channel, copy a line
+     from https://github.com/iptv-org/epg/blob/master/sites/tv.nu/tv.nu.channels.xml
+     and set xmltv_id to our id. SVT Barn and SVT24 share one feed. -->
+<channels>
+  <channel site="tv.nu" site_id="svt1" lang="sv" xmltv_id="SVT1.se">SVT1</channel>
+  <channel site="tv.nu" site_id="svt2" lang="sv" xmltv_id="SVT2.se">SVT2</channel>
+  <channel site="tv.nu" site_id="kunskapskanalen" lang="sv" xmltv_id="Kunskapskanalen.se">Kunskapskanalen</channel>
+  <channel site="tv.nu" site_id="svt-barn" lang="sv" xmltv_id="SVTBarnSVT24.se">SVT Barn</channel>
+  <channel site="tv.nu" site_id="svt24" lang="sv" xmltv_id="SVTBarnSVT24.se">SVT24</channel>
+</channels>

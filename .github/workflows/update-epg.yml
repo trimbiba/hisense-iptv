@@ -1,0 +1,32 @@
+name: Update TV guide
+
+on:
+  schedule:
+    - cron: "30 3 * * *"   # every day at 03:30 UTC
+  workflow_dispatch:       # "Run workflow" button on GitHub
+  push:
+    paths: [epg/**]        # rebuild right after you change the guide channels
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Fetch iptv-org's guide grabber
+        run: |
+          git clone --depth 1 https://github.com/iptv-org/epg.git grabber
+          cd grabber && npm install
+      - name: Download the guide
+        run: cd grabber && npm run grab --- --channels=../epg/svt.channels.xml --output=../guide.xml --days=3
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add guide.xml
+          git diff --cached --quiet || (git commit -m "Update TV guide" && git pull --rebase && git push)
