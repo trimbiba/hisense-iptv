@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TV guide sources, fetched nightly by .github/workflows/update-epg.yml
-     using iptv-org/epg. xmltv_id must equal the channel's tvg-id in
+<!-- Hand-picked TV guide sources. scripts/build_epg_channels.py merges these
+     with automatic Pluto TV entries into epg/guide.channels.xml, which
+     .github/workflows/update-epg.yml fetches nightly using iptv-org/epg. xmltv_id must equal the channel's tvg-id in
      playlist.m3u so Kodi can match them. allente.se fetches every channel
      in one request per day, so it isn't rate-limited like tv.nu. To add a
      channel, copy a line from
@@ -11,4 +12,9 @@
   <channel site="allente.se" site_id="20002" lang="sv" xmltv_id="SVT2.se">SVT2</channel>
   <channel site="allente.se" site_id="20013" lang="sv" xmltv_id="Kunskapskanalen.se">Kunskapskanalen</channel>
   <channel site="allente.se" site_id="20071" lang="sv" xmltv_id="SVTBarnSVT24.se">SVT Barn / SVT24</channel>
+  <channel site="allente.se" site_id="20104" lang="sv" xmltv_id="ATGLive.se">ATG Live</channel>
+  <channel site="allente.se" site_id="50077" lang="sv" xmltv_id="VSportGolf.se">V Sport Golf</channel>
+  <channel site="allente.se" site_id="50113" lang="sv" xmltv_id="ViasatExplore.se">Viasat Explore</channel>
+  <channel site="allente.se" site_id="50114" lang="sv" xmltv_id="ViasatHistory.se">Viasat History</channel>
+  <channel site="allente.se" site_id="50115" lang="sv" xmltv_id="ViasatNature.se">Viasat Nature</channel>
 </channels>

@@ -66,12 +66,15 @@ Edit `config.json` (or ask Claude Code). `pinnedChannels`, `homeCountries` and `
 
 ## TV guide
 
-`guide.xml` holds about 3 days of programmes for SVT1, SVT2, Kunskapskanalen and SVT Barn/SVT24, from allente.se. It's built nightly by `.github/workflows/update-epg.yml` using iptv-org's guide grabber.
+`guide.xml` holds 3 days of programmes, rebuilt nightly by `.github/workflows/update-epg.yml` with iptv-org's guide grabber. It covers:
+- **Hand-picked channels** in `epg/manual.channels.xml`: SVT1, SVT2, Kunskapskanalen, SVT Barn/SVT24, ATG Live, Viasat Explore/History/Nature and V Sport Golf, from allente.se.
+- **Every Pluto TV channel** from the countries in `config.json` → `guideCountries` (default `["SE", "UK"]`), matched automatically by `scripts/build_epg_channels.py`.
 
 In Kodi, PVR IPTV Simple Client → Configure → EPG: *Location* = Remote path, *XMLTV URL* =
 `https://raw.githubusercontent.com/trimbiba/hisense-iptv/main/guide.xml`
 
-To add a channel, add a line to `epg/svt.channels.xml`. allente.se covers about 150 Nordic channels. Set `xmltv_id` to the channel's `tvg-id` from `playlist.m3u`.
+- **More countries:** add codes to `guideCountries`. The US adds about 430 channels, which is slow on a Pi 3.
+- **Another single channel:** copy its line from iptv-org's [allente.se list](https://github.com/iptv-org/epg/blob/master/sites/allente.se/allente.se_se.channels.xml) into `epg/manual.channels.xml`, and set `xmltv_id` to the channel's `tvg-id` from `playlist.m3u`.
 
 ## Picture quality
 

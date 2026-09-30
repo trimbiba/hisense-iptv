@@ -5,7 +5,7 @@ on:
     - cron: "30 3 * * *"   # every day at 03:30 UTC
   workflow_dispatch:       # "Run workflow" button on GitHub
   push:
-    paths: [epg/**]        # rebuild right after you change the guide channels
+    paths: [epg/manual.channels.xml, config.json, scripts/build_epg_channels.py]
 
 permissions:
   contents: write
@@ -22,8 +22,10 @@ jobs:
         run: |
           git clone --depth 1 https://github.com/iptv-org/epg.git grabber
           cd grabber && npm install
+      - name: List the guide channels
+        run: python3 scripts/build_epg_channels.py
       - name: Download the guide
-        run: cd grabber && npm run grab --- --channels=../epg/svt.channels.xml --output=../guide.xml --days=3 --delay=1000
+        run: cd grabber && npm run grab --- --channels=../epg/guide.channels.xml --output=../guide.xml --days=3 --maxConnections=5
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
