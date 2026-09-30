@@ -25,10 +25,10 @@ jobs:
       - name: List the guide channels
         run: python3 scripts/build_epg_channels.py
       - name: Download the guide
-        run: cd grabber && npm run grab --- --channels=../epg/guide.channels.xml --output=../guide.xml --days=3 --maxConnections=5
+        run: cd grabber && npm run grab --- --channels=../epg/guide.channels.xml --output=../guide.xml --days=3 --maxConnections=5 --gzip=../guide.xml.gz
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add guide.xml
+          git add guide.xml.gz
           git diff --cached --quiet || (git commit -m "Update TV guide" && git pull --rebase && git push)

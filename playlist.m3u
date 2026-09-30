@@ -1,4 +1,4 @@
-#EXTM3U url-tvg="https://raw.githubusercontent.com/trimbiba/hisense-iptv/main/guide.xml"
+#EXTM3U url-tvg="https://raw.githubusercontent.com/trimbiba/hisense-iptv/main/guide.xml.gz"
 #EXTINF:-1 tvg-id="SVT1.se" tvg-chno="1" group-title="Pinned;Sweden" tvg-logo="https://i.imgur.com/j6KusQX.png",SVT1
 https://svt-live-channel.akamaized.net/l4/se/svt1/master-fmp4.m3u8?defaultSubLang=1&format=hls
 #EXTINF:-1 tvg-id="SVT2.se" tvg-chno="2" group-title="Pinned;Sweden" tvg-logo="https://i.imgur.com/pGWvCxp.png",SVT2

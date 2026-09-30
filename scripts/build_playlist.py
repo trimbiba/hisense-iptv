@@ -11,7 +11,7 @@ import os
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 # Built nightly by .github/workflows/update-epg.yml.
-GUIDE_URL = "https://raw.githubusercontent.com/trimbiba/hisense-iptv/main/guide.xml"
+GUIDE_URL = "https://raw.githubusercontent.com/trimbiba/hisense-iptv/main/guide.xml.gz"
 
 
 def main():
